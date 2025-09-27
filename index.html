@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="style.css">
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gamble Maps</title>
 </head>
+
 <body>
     <div id="container">
         <section id="titlecard">
-            <h1>Fall Hacks 2025</h1>
+            <h1>Fall Hacks 2025 - Gamble Maps</h1>
+            <p></p>
             <h2>Fraser Kent & Tyler Qiu</h2>
         </section>
 
 
-        <canvas id="myCanvas"></canvas>
+        <section id="game">
+            <div id="gamemap">
+                <canvas id="myCanvas"></canvas>
+                <div id="googleMap" style="width:100%;height:400px"></div>
+                <div id="grid">
+                    <button id="playbtn">Play</button>
+                    <input id="address" type="text" placeholder="Ender address (i.e. 1234 Place ave)" autocomplete="SFU">
+                    <input id="startaddress" type="text" placeholder="Ender Current location (i.e. 1234 Place ave)" autocomplete="SFU">
+                </div>
+            </div>
 
-        
-        
+
+        </section>
+
+
+
     </div>
     <script src="code.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?AIzaSyD-6iw8mkfV5zVaNfIfZn4aMav_yqQeVbg&callback=myMap"></script>
 </body>
+
 </html>
