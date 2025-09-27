@@ -4,6 +4,7 @@ Mashup Ideas
     - Games
         - Sfu Room finder but you have to win chips to get your directions (maybe just google maps directions)
             - the better your poker hand the better directions it gives you
+            - Link up with google maps api
         - All roads lead to rome if you get a royal flush
     - Gambling help site, but need to gamble to get facts/access
     - Anti addition site where you have to get another addiction to gain anti adddiction info 

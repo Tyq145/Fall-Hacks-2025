@@ -1,0 +1,22 @@
+body {
+    overflow: hidden;
+    background-color: #D4C2FC;
+    color: #28262C;
+}
+
+#container {
+    width: 80dvw;
+    max-width:  fit-content;
+    margin: 0 auto;
+    display: block;
+}
+
+#titlecard {
+    text-align: center;
+}
+
+canvas {
+    display: block;
+    height: 75dvh;
+    border: 5px solid black;
+}
