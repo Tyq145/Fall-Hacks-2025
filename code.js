@@ -24,14 +24,14 @@ function updateMouseCoordinates(event) {
     mouseY = mouseY * (canvas.height / canvasBox.height);
 }
 document.body.addEventListener("mousemove", updateMouseCoordinates);
-
+var map;
 // google maps function
 function myMap() {
     var mapProp = {
         center: new google.maps.LatLng(51.508742, -0.120850),
         zoom: 5,
     };
-    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+     map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 }
 
 // Setting Creating the new google maps directions to our new target location
