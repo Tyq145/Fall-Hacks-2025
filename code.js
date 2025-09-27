@@ -26,40 +26,18 @@ function updateMouseCoordinates(event) {
 document.body.addEventListener("mousemove", updateMouseCoordinates);
 
 // google maps function
-var map;
 function myMap() {
+    console.log("WORKING")
     var mapProp = {
         center: new google.maps.LatLng(51.508742, -0.120850),
         zoom: 5,
     };
-    map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    console.log("Map has been initialized", map);
 }
 
-
-// function startGame() {
-//     updateGame();
-//     window.requestAnimationFrame(drawGame);
-// }
-
-// function updateGame() {
-//     ctx.beginPath();
-//     ctx.fillStyle = "red";
-//     ctx.rect(0, 0, canvas.width, canvas.height);
-//     ctx.fill();
-//     ctx.closePath();
-
-//     window.setTimeout(updateGame, 50);
-// }
-
-// function drawGame() {
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-//     window.requestAnimationFrame(drawGame);
-// }
-
-
 // Setting Creating the new google maps directions to our new target location
-
+/*
 function calcRoute() {
     // Temporary value untill I can get a proper starting Lat Lng
     var start = new google.maps.LatLng(originLat, originLong);
@@ -89,6 +67,15 @@ function calcRoute() {
 
 }
 
+function test(){
+    originLat = 51;
+    originLong = 0;
+    targetLat = 55;
+    targetLong = 0;
+    
+    calcRoute();
+}
+ */
 
 
 class hands {
@@ -119,13 +106,21 @@ class BlackJack {
 
         startGame();
     }
-
+    resetGame(){
+        hands.playerHand = new Array();
+        hands.dealerHand = new Array();
+        hands.playerValue = 0;
+        hands.dealerValue = 0;
+        this.fillDeck();
+    }
     win(){
         chips += this.betamount;
+        this.resetGame();
     }
 
     lose(){
         chips -= this.betamount;
+        this.resetGame();
     }
 
     hit() {
@@ -197,12 +192,12 @@ class BlackJack {
     }
 
 }
+
 let targetLong;
 let targetLat;
 let originLong;
 let originLat;
-
-
+/*
 function getTargetLongLat(address) {
     // Get the desired location the user wants to reach from the input
     // https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingRequests This page details how to convert
@@ -216,7 +211,7 @@ function getTargetLongLat(address) {
             targetLong = results[0].geometry.location.long();
         }
         else {
-            console.log("Something has gone horribly wrong with getting the target destination of our path.");
+            console.log("Something has gone horribly wrong with getting the target destination of our path. Status: " + status);
         }
     })
     // calls to get directions need to be made through a lat long object from google. However when we call the geocahing api
@@ -231,10 +226,10 @@ function getOriginLongLat(address){
             originLat = result[0].geometry.location.lat();
         }
         else{
-            console.log("Something has gone horrible wrong with getting the origin of path.");
+            console.log("Something has gone horrible wrong with getting the origin of path. Status: " + status);
         }
     })
-}
+} */
 
 class Offset {
     constructor() {
@@ -251,10 +246,10 @@ class Offset {
             missPercentage = chips / target;
         }
     }
-L
+
     modifyLongLat() {
         if (missPercentage <= 0) {
-a            // If tthey fail spectacularly ima send them to point nemo in the middle of the pacific ocean. Most isolated place
+            // If tthey fail spectacularly ima send them to point nemo in the middle of the pacific ocean. Most isolated place
             // in the world; 48°52.6′S 123°23.6′W long lat for point nemo.
             targetLat =  -26.74561;
             targetLong =  -12.058595;
@@ -269,7 +264,7 @@ a            // If tthey fail spectacularly ima send them to point nemo in the m
         // Modifying longitude. 0 means modifyinf east, 1 means modifying west
         // Longitude goes up as you go more east and down as you go more west
         if (Math.floor(Math.random * 2) == 0) {
-            targetLong += 4 * (missPercentage);
+            targetLong += 4 * (missPercentage) *(M);
         }else {
             targetLong -= 4 * (missPercentage);
         }
@@ -304,27 +299,55 @@ function drawboard() {
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.fillStyle = "#14248A";
-    ctx.rect(0, 0.7 * canvas.height, 0.2 * canvas.width, 0.3 * canvas.height);
+    ctx.fillStyle = "#1d8a1eff";
+    ctx.rect(0, 0.7 * canvas.height, 0.2 * canvas.width, 0.15 * canvas.height);
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.fillStyle = "#9c1818ff";
+    ctx.rect(0, 0.85 * canvas.height, 0.2 * canvas.width, 0.15 * canvas.height);
     ctx.fill();
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.fillStyle = "#14248A";
-    ctx.rect(0, 0.7 * canvas.height, 0.2 * canvas.width, 0.3 * canvas.height);
-    ctx.fill();
+    ctx.fillStyle = "#F9F5FF";
+    ctx.textBaseline = "middle";
+    ctx.font = "5dvh Arial";
+    ctx.fillText("HIT",   0.025 * canvas.width , 0.8 * canvas.height);
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.fillStyle = "#F9F5FF";
+    ctx.textBaseline = "middle";
+    ctx.font = "5dvh Arial";
+    ctx.fillText("STAND",  0.025 * canvas.width, 0.9 * canvas.height);
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.fillStyle = "black";
+    ctx.textBaseline = "middle";
+    ctx.font = "5dvh Arial";
+    ctx.fillText("Chips: " + chips,  0.025 * canvas.width, 0.05* canvas.height);
+    ctx.fillText("Bet: " + betamount,  0.025 * canvas.width, 0.11 * canvas.height);
+
     ctx.closePath();
 
 }
 
+function drawhand() {
+
+}
 
 
+let betamount;
 document.getElementById("playbtn").addEventListener("click", function () {
+    betamount = document.getElementById("bet").value;
     drawboard();
 
 
     let address = document.getElementById("address").value;
-    let origin = document.getElementById("startAdress").value;
+    let origin = document.getElementById("startaddress").value;
     if (typeof game != BlackJack) {
         game = new BlackJack();
     }
