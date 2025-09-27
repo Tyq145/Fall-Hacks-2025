@@ -27,17 +27,15 @@ document.body.addEventListener("mousemove", updateMouseCoordinates);
 
 // google maps function
 function myMap() {
-    console.log("WORKING")
     var mapProp = {
         center: new google.maps.LatLng(51.508742, -0.120850),
         zoom: 5,
     };
     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    console.log("Map has been initialized", map);
 }
 
 // Setting Creating the new google maps directions to our new target location
-/*
+
 function calcRoute() {
     // Temporary value untill I can get a proper starting Lat Lng
     var start = new google.maps.LatLng(originLat, originLong);
@@ -75,7 +73,7 @@ function test(){
     
     calcRoute();
 }
- */
+
 
 
 class hands {
@@ -264,7 +262,7 @@ class Offset {
         // Modifying longitude. 0 means modifyinf east, 1 means modifying west
         // Longitude goes up as you go more east and down as you go more west
         if (Math.floor(Math.random * 2) == 0) {
-            targetLong += 4 * (missPercentage) *(M);
+            targetLong += 4 * (missPercentage);
         }else {
             targetLong -= 4 * (missPercentage);
         }
@@ -281,6 +279,8 @@ class Offset {
 }
 
 let game;
+
+
 
 function drawboard() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
