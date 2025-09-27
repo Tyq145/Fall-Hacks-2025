@@ -195,7 +195,7 @@ let targetLong;
 let targetLat;
 let originLong;
 let originLat;
-/*
+
 function getTargetLongLat(address) {
     // Get the desired location the user wants to reach from the input
     // https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingRequests This page details how to convert
@@ -227,7 +227,7 @@ function getOriginLongLat(address){
             console.log("Something has gone horrible wrong with getting the origin of path. Status: " + status);
         }
     })
-} */
+} 
 
 class Offset {
     constructor() {
