@@ -41,7 +41,7 @@ body {
 
 #grid {
     display: grid;
-    grid-template-columns: 10dvw 5dvw 20dvw 20dvw;
+    grid-template-columns: 10dvw 5dvw 20dvw 20dvw auto;
     grid-template-rows: auto;
     background-color: #F9F5FF;
 
